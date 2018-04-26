@@ -199,3 +199,49 @@ void road(){
     glLineWidth(1.0);
 
 }
+
+void msc() {
+    glPushMatrix();
+    glColor3f(0.7,0.7,0.7);
+    glTranslatef(-3.4,5,0);
+    glRotatef(45,1,1,0);
+    glutSolidCube(2);
+    glPopMatrix();
+}
+
+void range() {
+    glPushMatrix();
+    glTranslatef(-4,5,-2);
+    glScalef(0.65,0.65,0.65);
+
+    glColor3f(0.0,0.0,1.0);
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(-20.0,0,0);
+    glVertex3f(0,0,0);
+    glVertex3f(10.0,-17.32,0);
+    glVertex3f(0.0,-34.64,0);
+    glVertex3f(-20.0,-34.64,0);
+    glVertex3f(-30.0,-17.32,0);
+    glEnd();
+
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(10.0,17.32,0);
+    glVertex3f(0,0,0);
+    glVertex3f(10.0,-17.32,0);
+    glVertex3f(30.0,-17.32,0);
+    glVertex3f(40.0,0,0);
+    glVertex3f(30.0,17.32,0);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glVertex3f(-20.0,0,0);
+    glVertex3f(-30.0,17.32,0);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glVertex3f(30.0,-17.32,0);
+    glVertex3f(40.0,-34.64,0);
+    glEnd();
+
+    glPopMatrix();
+}

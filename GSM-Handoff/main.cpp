@@ -39,8 +39,9 @@ void display(){
     trees();
     road();
     //hill();
-
     tower();
+    msc();
+    range();
 
     glBegin(GL_LINE_LOOP);
     glColor3f(0.0,0.0,0.0);
