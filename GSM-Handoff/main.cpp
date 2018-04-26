@@ -35,6 +35,11 @@ void display(){
     //gluLookAt(viewer[0], viewer[1], viewer[2], 0.0,0.0,0.0,0.0,1.0,0.0);
     move_car();
 
+     move_car();
+    trees();
+    road();
+    hill();
+
     glPushMatrix();
     glTranslatef(-15,0,0);
     tower();
@@ -126,7 +131,7 @@ int main(int argc, char **argv)
 ///////////////////end of lighting//////////////////////////////////////////
    gluLookAt(0.0,0.0,-10.0,0.0,0.0,0.0,0,1,0);
 
-    glEnable (GL_LIGHTING);
+  /*  glEnable (GL_LIGHTING);
     glEnable (GL_LIGHT0);
     glShadeModel (GL_SMOOTH);
     GLfloat mat_ambient[] = {0.4f, 0.4f, 0.4f, 1.0f}; // gray
@@ -143,7 +148,7 @@ int main(int argc, char **argv)
     GLfloat light_position[] = {2.0f, 6.0f, 3.0f, 0.0f};
     glLightfv (GL_LIGHT0, GL_POSITION, light_position);
     glLightfv (GL_LIGHT0, GL_DIFFUSE, lightIntensity);
-
+*/
     myinit();
     glEnable(GL_DEPTH_TEST);
     glutMainLoop();
