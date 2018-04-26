@@ -36,7 +36,7 @@ glBegin(GL_POLYGON);
 
 void car(){
     glPushMatrix();
-        glTranslatef(0,-5,0);
+        glTranslatef(0,-6,0);
         glScalef(0.7,0.7,0.7);
         glRotatef(-15,-1,0,0);
 
@@ -82,15 +82,29 @@ void car(){
 
 }
 
-void tower() {
+void towertemp() {
     glPushMatrix();
-    glTranslatef(0,0,0);
+    glColor3f(0,0,0);
+    glTranslatef(0,-2,0);
     glRotatef(75,-1,0,0);
     glScalef(0.75,0.75,0.75);
     glutWireCone(2,8,6,10);
     glPopMatrix();
 }
 
+void tower(){
+
+glPushMatrix();
+    glTranslatef(-15,0,0);
+    towertemp();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(15,0,0);
+    towertemp();
+    glPopMatrix();
+
+}
 
 void treetemp(){
     glPushMatrix();
@@ -164,10 +178,10 @@ void road(){
     glColor3f(0.4,0.4,0.4);
     glPushMatrix();
     glBegin(GL_POLYGON);
-    glVertex2f(-10,-9);
-    glVertex2f(10,-9);
-    glVertex2f(10,-6.8);
-    glVertex2f(-10,-6.8);
+    glVertex2f(-20,-9);
+    glVertex2f(20,-9);
+    glVertex2f(20,-6.8);
+    glVertex2f(-20,-6.8);
     glEnd();
     glPopMatrix();
 
@@ -177,8 +191,8 @@ void road(){
     glLineStipple (1, 0x03FF);
     glLineWidth (5.0);
     glBegin(GL_LINE_STRIP);
-    glVertex3f(-10,-7.9,1);
-    glVertex3f(10,-7.9,1);
+    glVertex3f(-20,-7.9,1);
+    glVertex3f(20,-7.9,1);
     glEnd();
     glDisable(GL_LINE_STIPPLE);
     glPopMatrix();

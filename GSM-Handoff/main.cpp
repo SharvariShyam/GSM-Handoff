@@ -40,15 +40,7 @@ void display(){
     road();
     hill();
 
-    glPushMatrix();
-    glTranslatef(-15,0,0);
     tower();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslatef(15,0,0);
-    tower();
-    glPopMatrix();
 
     glBegin(GL_LINE_LOOP);
     glColor3f(0.0,0.0,0.0);
