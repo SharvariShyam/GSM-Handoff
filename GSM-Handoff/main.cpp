@@ -38,7 +38,7 @@ void display(){
      move_car();
     trees();
     road();
-    hill();
+    //hill();
 
     tower();
 
