@@ -36,9 +36,9 @@ glBegin(GL_POLYGON);
 
 void car(){
     glPushMatrix();
-        glTranslatef(0,-6,0);
+        glTranslatef(0,-5.0,0);
         glScalef(0.7,0.7,0.7);
-        glRotatef(-15,-1,0,0);
+        glRotatef(-30,-1,0.15,0);
 
         //top
 
@@ -168,9 +168,9 @@ void trees(){
 void hill(){
     glPushMatrix();
     glColor3f(0.75,0.16,0.16);
-    glTranslatef(0,0,-5);
+    glTranslatef(0,0,-3);
     glScalef(3,4,1);
-    glutWireSphere(2,30,30);
+    glutSolidSphere(2,30,30);
     glPopMatrix();
 }
 

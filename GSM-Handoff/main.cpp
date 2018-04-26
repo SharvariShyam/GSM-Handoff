@@ -123,12 +123,14 @@ int main(int argc, char **argv)
 ///////////////////end of lighting//////////////////////////////////////////
    gluLookAt(0.0,0.0,-10.0,0.0,0.0,0.0,0,1,0);
 
-  /*  glEnable (GL_LIGHTING);
+    glEnable (GL_LIGHTING);
     glEnable (GL_LIGHT0);
+    //glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    glEnable(GL_COLOR_MATERIAL);
     glShadeModel (GL_SMOOTH);
     GLfloat mat_ambient[] = {0.4f, 0.4f, 0.4f, 1.0f}; // gray
     GLfloat mat_diffuse[] = {.5f, .5f, .5f, 1.0f};
-    GLfloat mat_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    GLfloat mat_specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
     GLfloat mat_shininess[] = {50.0f};
     glMaterialfv (GL_FRONT, GL_AMBIENT, mat_ambient);
     glMaterialfv (GL_FRONT, GL_DIFFUSE, mat_diffuse);
@@ -136,11 +138,11 @@ int main(int argc, char **argv)
     glMaterialfv (GL_FRONT, GL_SHININESS, mat_shininess);
 
             //set the light source properties
-    GLfloat lightIntensity[] = {0.7f, 0.7f, 0.7f, 1.0f};
-    GLfloat light_position[] = {2.0f, 6.0f, 3.0f, 0.0f};
+    GLfloat lightIntensity[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    GLfloat light_position[] = {-7.0f, -3.0f, -10.0f, 0.0f};
     glLightfv (GL_LIGHT0, GL_POSITION, light_position);
     glLightfv (GL_LIGHT0, GL_DIFFUSE, lightIntensity);
-*/
+
     myinit();
     glEnable(GL_DEPTH_TEST);
     glutMainLoop();
