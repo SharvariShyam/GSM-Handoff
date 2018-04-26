@@ -1,6 +1,6 @@
 void top_car(){
-glColor3f(0.0,0.0,1.0);
-glBegin(GL_POLYGON);
+    glColor3f(0.0,0.0,1.0);
+    glBegin(GL_POLYGON);
 
   glVertex3f(-2,2,0.3);
   glVertex3f(-3,0,0);
@@ -36,16 +36,16 @@ glBegin(GL_POLYGON);
 
 void car(){
     glPushMatrix();
-        glTranslatef(-7,-6,0);
+        glTranslatef(0,-5,0);
         glScalef(0.7,0.7,0.7);
-       // glRotatef(45,1,0,0);
+        glRotatef(-15,-1,0,0);
 
         //top
 
         top_car();
 
     // body
-        glColor3f(0,0,1);
+        glColor3f(1.0,0,0);
         glPushMatrix();
             glScalef(4.5,1,1);
             glTranslatef(0,-1,1);
@@ -68,15 +68,29 @@ void car(){
 
             glTranslatef(-2,-2,2);
             glutSolidTorus(0.3,0.8,8,8);
+            glColor3f(1.0,1.0,1.0);
+            glutSolidSphere(0.5,8,8);
         glPopMatrix();
         glPushMatrix();
 
             glTranslatef(2,-2,2);
+            glutSolidSphere(0.5,8,8);
+            glColor3f(0.0,0.0,0.0);
             glutSolidTorus(0.3,0.8,8,8);
         glPopMatrix();
     glPopMatrix();
 
 }
+
+void tower() {
+    glPushMatrix();
+    glTranslatef(0,0,0);
+    glRotatef(75,-1,0,0);
+    glScalef(0.75,0.75,0.75);
+    glutWireCone(2,8,6,10);
+    glPopMatrix();
+}
+
 
 void treetemp(){
     glPushMatrix();
