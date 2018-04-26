@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1524758380 source:/home/sharvari/Documents/CG/GSM-Handoff/GSM-Handoff/main.cpp
+	<iostream>
+	<math.h>
+	<GL/glut.h>
+	<stdio.h>
+	"draw.h"
+
+1524758524 /home/sharvari/Documents/CG/GSM-Handoff/GSM-Handoff/draw.h
+
