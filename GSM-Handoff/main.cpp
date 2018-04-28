@@ -14,7 +14,7 @@ void move_car();
 void car_navigation(int,int,int);
 //static GLdouble viewer[] = {0.0,0.0,15.0};
 
-int car_pos=-17;
+//int car_pos=-17;
 
 
 void move_car(){
@@ -42,12 +42,7 @@ void display(){
     tower();
     msc();
     range();
-
-    glBegin(GL_LINE_LOOP);
-    glColor3f(0.0,0.0,0.0);
-    glVertex3f(car_pos,-5.0,0.0);
-    glVertex3f(-15.0,0.0,0.0);
-    glEnd();
+    drawlines();
 
     glFlush();
     glutSwapBuffers();

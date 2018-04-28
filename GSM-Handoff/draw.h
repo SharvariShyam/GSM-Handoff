@@ -1,3 +1,5 @@
+int car_pos=-17;
+
 void top_car(){
     glColor3f(0.0,0.0,1.0);
     glBegin(GL_POLYGON);
@@ -84,23 +86,25 @@ void car(){
 
 void towertemp() {
     glPushMatrix();
+    glLineWidth(4);
     glColor3f(0,0,0);
     glTranslatef(0,-2,0);
     glRotatef(75,-1,0,0);
     glScalef(0.75,0.75,0.75);
     glutWireCone(2,8,6,10);
+    glLineWidth(1);
     glPopMatrix();
 }
 
 void tower(){
 
-glPushMatrix();
-    glTranslatef(-15,0,0);
+    glPushMatrix();
+    glTranslatef(-12,-1,0);
     towertemp();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(15,0,0);
+    glTranslatef(11,5,0);
     towertemp();
     glPopMatrix();
 
@@ -153,13 +157,15 @@ void treetemp(){
 void trees(){
     glPushMatrix();
     glScalef(0.7,0.7,0.7);
-    glTranslatef(-8,-6.5,0);
+    //glTranslatef(-8,-6.5,0);
+    glTranslatef(-20,7,0);
     treetemp();
     glPopMatrix();
 
     glPushMatrix();
-    glScalef(0.95,0.95,0.95);
-    glTranslatef(-2,-6.5,0);
+    glScalef(0.7,0.7,0.7);
+    //glTranslatef(-2,-6.5,0);
+    glTranslatef(-15,7,0);
     treetemp();
     glPopMatrix();
 
@@ -188,7 +194,7 @@ void road(){
     glColor3f(1.0,1.0,1.0);
     glPushMatrix();
     glEnable (GL_LINE_STIPPLE);
-    glLineStipple (1, 0x03FF);
+    glLineStipple (5, 0x07FF);
     glLineWidth (5.0);
     glBegin(GL_LINE_STRIP);
     glVertex3f(-20,-7.9,1);
@@ -211,6 +217,9 @@ void msc() {
 
 void range() {
     glPushMatrix();
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1,0x00FF);
+
     glTranslatef(-4,5,-2);
     glScalef(0.65,0.65,0.65);
 
@@ -243,5 +252,26 @@ void range() {
     glVertex3f(40.0,-34.64,0);
     glEnd();
 
+    glDisable(GL_LINE_STIPPLE);
     glPopMatrix();
+}
+
+void drawlines() {
+
+
+
+    if(car_pos<1) {
+        glBegin(GL_LINE_LOOP);
+        glColor3f(0.0,0.0,0.0);
+        glVertex3f(car_pos,-5.0,0.0);
+        glVertex3f(-12.0,-1.0,0.0);
+        glEnd();
+    }
+    else {
+        glBegin(GL_LINE_LOOP);
+        glColor3f(0.0,0.0,0.0);
+        glVertex3f(car_pos,-5.0,0.0);
+        glVertex3f(11.0,5.0,0.0);
+        glEnd();
+    }
 }
