@@ -3,9 +3,12 @@
 #include <GL/glut.h>
 #include <stdio.h>
 #include "draw.h"
+#include <string.h>
+//#include "linepoints.cpp"
 
 
 #define FPS 10
+//int p=0;
 
 using namespace std;
 
@@ -34,15 +37,19 @@ void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //gluLookAt(viewer[0], viewer[1], viewer[2], 0.0,0.0,0.0,0.0,1.0,0.0);
     move_car();
-
-     move_car();
     trees();
     road();
     //hill();
     tower();
     msc();
     range();
+    //float points[20][2];
+
     drawlines();
+    //int i;
+    //findPoints((float)car_pos,(float)-5.0,(float)-12.0,(float)-1.0,points);
+    //for(i=0;i<10;i++)
+    display_string(5,4,"Saumya",GLUT_BITMAP_TIMES_ROMAN_10);
 
     glFlush();
     glutSwapBuffers();

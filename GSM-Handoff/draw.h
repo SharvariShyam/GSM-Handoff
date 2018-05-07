@@ -1,4 +1,12 @@
-int car_pos=-17;
+#include "linepoints.cpp"
+#include<string.h>
+int p=0;
+int i=0;
+
+float car_pos=-17;
+float points[20][2];
+float bs1msc[20][2];
+float mscbs2[20][2];
 
 void top_car(){
     glColor3f(0.0,0.0,1.0);
@@ -257,21 +265,69 @@ void range() {
 }
 
 void drawlines() {
-
-
-
+    //int i=0;
     if(car_pos<1) {
-        glBegin(GL_LINE_LOOP);
-        glColor3f(0.0,0.0,0.0);
-        glVertex3f(car_pos,-5.0,0.0);
-        glVertex3f(-12.0,-1.0,0.0);
-        glEnd();
+
+        findPoints((float)car_pos,(float)-5.0,(float)-12.0,(float)-1.0,points);
+        if(points[p+4][1] < -1.0){
+            drawpixel(points[p][0],points[p][1]);
+            drawpixel(points[p+4][0],points[p+4][1]);
+        }
+        p++;
+        if(p+4>=20)
+            p=0;
+        points[20][2] = {0};
     }
     else {
-        glBegin(GL_LINE_LOOP);
-        glColor3f(0.0,0.0,0.0);
-        glVertex3f(car_pos,-5.0,0.0);
-        glVertex3f(11.0,5.0,0.0);
-        glEnd();
+
+        findPoints((float)car_pos,(float)-5.0,(float)11.0,(float)5.0,points);
+        if(points[p][1] < 5.0){
+            drawpixel(points[p][0],points[p][1]);
+            drawpixel(points[p+7][0],points[p+7][1]);
+        }
+        p++;
+        if(p+7>=20)
+            p=0;
+        points[20][2] = {0};
     }
+
+    //float bs1msc[20][2];
+    if(car_pos>=-3 && car_pos<=0) {
+        findPoints(-12.0,-1.0,-3.4,5.0,bs1msc);
+        drawpixel(bs1msc[i][0],bs1msc[i][1]);
+        drawpixel(bs1msc[i+4][0],bs1msc[i+4][1]);
+        i++;
+        if(i+4>=20)
+            i=0;
+        bs1msc[20][2] = {0};
+    }
+
+    if(car_pos>=0 && car_pos<=3) {
+        findPoints(-3.4,5.0,11.0,5.0,mscbs2);
+        drawpixel(mscbs2[i][0],mscbs2[i][1]);
+        drawpixel(mscbs2[i+4][0],mscbs2[i+4][1]);
+        i++;
+        if(i+4>=20)
+            i=0;
+        mscbs2[20][2] = {0};
+    }
+}
+
+
+void display_string(int x, int y, char *string, int font)
+{
+	int len,i;
+	glRasterPos2f(x, y);
+	len = (int) strlen(string);
+	for (i = 0; i < len; i++) {
+		if(font==1)
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,string[i]);
+		else if(font==2)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,string[i]);
+		else if(font==3)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12,string[i]);
+		else if(font==4)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10,string[i]);
+	}
+
 }
