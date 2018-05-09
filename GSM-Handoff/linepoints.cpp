@@ -72,7 +72,7 @@ void drawpixel(float x, float y) {
     //printf("%.6f\t%.6f\n",x,y);
 }
 
-void display_string(int x, int y, char *string, int font)
+void display_string(float x, float y, char *string, int font)
 {
 	int len,i;
 	glRasterPos2f(x, y);

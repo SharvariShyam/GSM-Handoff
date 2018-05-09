@@ -7,7 +7,7 @@
 //#include "linepoints.cpp"
 
 
-#define FPS 10
+#define FPS 5
 int dis=0;
 
 using namespace std;
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
     glutSpecialFunc(car_navigation);
     //glutReshapeFunc(myReshape);
     glutKeyboardFunc(keyboard);
-   //gluLookAt(0.0,0.0,-10.0,0.0,0.0,0.0,0,1,0);
+    //gluLookAt(0.0,0.0,-10.0,0.0,0.0,0.0,0,1,0);
 
     glEnable (GL_LIGHTING);
     glEnable (GL_LIGHT0);
@@ -128,18 +128,18 @@ int main(int argc, char **argv)
 
             //set the light source properties
     GLfloat lightIntensity[] = {1.0f, 1.0f, 1.0f, 1.0f};
-   // GLfloat light_position[] = {-7.0f, -3.0f, -7.0f, 0.0f};
+    // GLfloat light_position[] = {-7.0f, -3.0f, -7.0f, 0.0f};
     // Create light components
-GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
-GLfloat diffuseLight[] = { 0.8f, 0.8f, 0.8, 1.0f };
-GLfloat specularLight[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-GLfloat position[] = { 1.5f, 1.0f, 4.0f, 1.0f };
+    GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
+    GLfloat diffuseLight[] = { 0.8f, 0.8f, 0.8, 1.0f };
+    GLfloat specularLight[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+    GLfloat position[] = { 1.5f, 1.0f, 4.0f, 1.0f };
 
-// Assign created components to GL_LIGHT0
-glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
-glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
-glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
-glLightfv(GL_LIGHT0, GL_POSITION, position);
+    // Assign created components to GL_LIGHT0
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+    glLightfv(GL_LIGHT0, GL_POSITION, position);
 
     //glLightfv (GL_LIGHT0, GL_POSITION, light_position);
     glLightfv (GL_LIGHT0, GL_DIFFUSE, lightIntensity);
