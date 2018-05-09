@@ -12,7 +12,7 @@
 int dis=0;
 
 using namespace std;
-
+void addImage();
 void timer_call(int);
 void move_car();
 void car_navigation(int,int,int);
@@ -41,7 +41,9 @@ void display(){
     //}
 
     //if(dis == 1){
-        move_car();
+
+    addImage();
+    move_car();
         trees();
         road();
         tower();
@@ -150,4 +152,33 @@ glLightfv(GL_LIGHT0, GL_POSITION, position);
     myinit();
     glEnable(GL_DEPTH_TEST);
     glutMainLoop();
+}
+
+void addImage() {
+
+	glEnable(GL_TEXTURE_2D);
+	glColor4f(1.0, 1.0, 1.0, 1.0);
+	GLuint tex_2d1 = SOIL_load_OGL_texture
+	(
+		"sc6.jpeg",
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_COMPRESS_TO_DXT
+	);
+	//change vertex co-ordinates accordingly
+	glBindTexture(GL_TEXTURE_2D, tex_2d1);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glBegin(GL_POLYGON);
+		glTexCoord2f(0.0, 1.0);
+		glVertex2f(-20, 2);
+		glTexCoord2f(1.0, 1.0);
+		glVertex2f(20, 2);
+		glTexCoord2f(1.0, 0.0);
+		glVertex2f(20, 10);
+		glTexCoord2f(0.0, 0.0);
+		glVertex2f(-20, 10);
+	glEnd();
+
+	glDisable(GL_TEXTURE_2D);
+	glFlush();
 }
