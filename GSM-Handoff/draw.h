@@ -14,6 +14,7 @@ void towertemp();
 void tower();
 void trees();
 void treetemp();
+void tempcloud(int,float,int,float,int,float);
 
 void top_car(){
     glColor3f(0.9,0.9,0.9);
@@ -322,16 +323,77 @@ glColor3f(0.3,0.7,0.3);
   glTranslatef(0,-5,-5);
   glScalef(20,2.8,0.1);
   glutSolidCube(5);
-  /*glBegin(GL_POLYGON);
-  glVertex3f(-20,-10,-5);
-  glVertex3f(20,-10,-5);
-  glVertex3f(20,0,-5);
-  glVertex3f(-20,0,-5);
-  glEnd();
-  */
+
+  glPopMatrix();
+}
+void sky(){
+glColor3f(0.68,0.84,0.94);
+  glPushMatrix();
+  //glRotatef(10,0,1,0);
+  glTranslatef(0,4,-5);
+  glScalef(20,2.8,0.1);
+  glutSolidCube(5);
+
   glPopMatrix();
 }
 
+void clouds(){
+glPushMatrix();
+glTranslatef(0,4,0);
+
+tempcloud(1,0.5,1,0.8,1,0.6);
+
+glPushMatrix();
+glRotatef(0,0,1,0);
+glTranslatef(1.8,0,0);
+tempcloud(0,0,1,0.8,0,0.6);
+glPopMatrix();
+
+glColor3f(1,1,1);
+glPushMatrix();
+glTranslatef(0.5,2.7,-1);
+glutSolidSphere(1.2,20,20);
+glPopMatrix();
+
+glPopMatrix();
+}
+
+void tempcloud(int l,float ls,int m,float ms,int r,float rs){
+glPushMatrix();
+glRotatef(-30,0,1,0);
+ glColor3f(1,1,1);
+ if(l==1){
+    glPushMatrix();
+    glTranslatef(-0.7,2,0);
+    glRotatef(-90,1,0,0);
+    glutSolidSphere(ls,10,10);
+    glPopMatrix();
+}
+if(m==1){
+    glColor3f(1,1,1);
+    glPushMatrix();
+    glTranslatef(0,2.2,0);
+    glRotatef(-90,1,0,0);
+    glutSolidSphere(ms,10,10);
+    glPopMatrix();
+}
+if(r==1){
+    glColor3f(0.89,0.917,0.98);
+    glPushMatrix();
+    glTranslatef(0.4,1.9,-0.7);
+    glRotatef(-90,1,0,0);
+    glutSolidSphere(rs,10,10);
+    glPopMatrix();
+}
+glPopMatrix();
+}
+
+void cloudy(){
+glPushMatrix();
+glTranslatef(6,0,0);
+clouds();
+glPopMatrix();
+}
 void drawlines() {
     //int i=0;
     if(car_pos<1) {

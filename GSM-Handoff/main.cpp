@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "draw.h"
 #include <string.h>
+#include  "SOIL.h"
 //#include "linepoints.cpp"
 
 
@@ -35,11 +36,11 @@ void move_car(){
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    if(dis == 0) {
-        frontpage();
-    }
+  //  if(dis == 0) {
+    //    frontpage();
+    //}
 
-    if(dis == 1){
+    //if(dis == 1){
         move_car();
         trees();
         road();
@@ -47,8 +48,10 @@ void display(){
         msc();
         range();
         horizon();
+        sky();
+        cloudy();
         drawlines();
-    }
+    //}
     glFlush();
     glutSwapBuffers();
 }
