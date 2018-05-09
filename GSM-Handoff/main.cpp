@@ -8,7 +8,7 @@
 
 
 #define FPS 10
-//int p=0;
+int dis=0;
 
 using namespace std;
 
@@ -35,16 +35,20 @@ void move_car(){
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    if(dis == 0) {
+        frontpage();
+    }
 
-   move_car();
-    trees();
-    road();
-
-    tower();
-    msc();
-    range();
-   horizon();
-    drawlines();
+    if(dis == 1){
+        move_car();
+        trees();
+        road();
+        tower();
+        msc();
+        range();
+        horizon();
+        drawlines();
+    }
     glFlush();
     glutSwapBuffers();
 }
@@ -85,6 +89,13 @@ void myReshape(int w, int h) {
     glMatrixMode(GL_MODELVIEW);
 }
 
+void keyboard(unsigned char key, int x, int y) {
+    if(key=='m')
+        dis++;
+    if(key=='n')
+        dis--;
+}
+
 int main(int argc, char **argv)
 {
     glutInit(&argc,argv);
@@ -96,7 +107,7 @@ int main(int argc, char **argv)
     glutTimerFunc(0,timer_call,0);
     glutSpecialFunc(car_navigation);
     //glutReshapeFunc(myReshape);
-
+    glutKeyboardFunc(keyboard);
    //gluLookAt(0.0,0.0,-10.0,0.0,0.0,0.0,0,1,0);
 
     glEnable (GL_LIGHTING);

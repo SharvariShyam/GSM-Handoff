@@ -348,7 +348,7 @@ void drawlines() {
     }
     else {
 
-        findPoints((float)car_pos,(float)-5.0,(float)11.0,(float)5.0,points);
+        findPoints((float)car_pos,(float)-5.0,(float)11.0,(float)2.8,points);
         if(points[p][1] < 5.0){
             drawpixel(points[p][0],points[p][1]);
             drawpixel(points[p+7][0],points[p+7][1]);
@@ -361,7 +361,7 @@ void drawlines() {
 
     //float bs1msc[20][2];
     if(car_pos>=-3 && car_pos<=0) {
-        findPoints(-12.0,-1.0,-3.4,5.0,bs1msc);
+        findPoints(-12.0,-1.0,-3,2.8,bs1msc);
         drawpixel(bs1msc[i][0],bs1msc[i][1]);
         drawpixel(bs1msc[i+4][0],bs1msc[i+4][1]);
         i++;
@@ -371,7 +371,7 @@ void drawlines() {
     }
 
     if(car_pos>=0 && car_pos<=3) {
-        findPoints(-3.4,5.0,11.0,5.0,mscbs2);
+        findPoints(-3,2.8,11.0,2.8,mscbs2);
         drawpixel(mscbs2[i][0],mscbs2[i][1]);
         drawpixel(mscbs2[i+4][0],mscbs2[i+4][1]);
         i++;
@@ -381,3 +381,21 @@ void drawlines() {
     }
 }
 
+void frontpage() {
+    //glClearColor(1.0,1.0,0.1,1.0);
+    glColor3f(0.0,0.0,0.0);
+    display_string(-10,8,"PES INSTITUTE OF TECHNOLOGY-BANGALORE SOUTH CAMPUS",2); //correct cordinate according to name
+    display_string(215,500,"",1);
+    display_string(390,470,"HELP",2);
+    display_string(10,450,"MOUSE",2);
+    display_string(10,410,"PRESS RIGHT BUTTON FOR MENU",3);
+    display_string(10,370,"KEYBOARD",2);
+    display_string(10,340,"X-Y-Z KEYS FOR CORRESPONDING ROTATION",3);
+    display_string(10,310,"A-S-Q CAR CUSTOM SIZE SELECTION",3);
+    display_string(10,280,"U-F FOR CAMERA VIEW SETTINGS",3);
+    display_string(10,250,"USE LEFT ARROW(<-) AND RIGHT ARROW(->) TO MOVE CAR",3);
+    display_string(10,220,"ESCAPE TO EXIT",3);
+    display_string(250,150,"PRESS SPACE BAR TO ENTER",2);
+    glutPostRedisplay();
+    glutSwapBuffers();
+}
