@@ -35,22 +35,16 @@ void move_car(){
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //gluLookAt(viewer[0], viewer[1], viewer[2], 0.0,0.0,0.0,0.0,1.0,0.0);
-    move_car();
+
+   move_car();
     trees();
     road();
-    //hill();
+
     tower();
     msc();
     range();
-    //float points[20][2];
-
+   horizon();
     drawlines();
-    //int i;
-    //findPoints((float)car_pos,(float)-5.0,(float)-12.0,(float)-1.0,points);
-    //for(i=0;i<10;i++)
-    display_string(5,4,"Saumya",GLUT_BITMAP_TIMES_ROMAN_10);
-
     glFlush();
     glutSwapBuffers();
 }
@@ -77,6 +71,7 @@ void car_navigation(int key,int,int){
             break;
     }
 
+
 }
 
 void myReshape(int w, int h) {
@@ -101,33 +96,13 @@ int main(int argc, char **argv)
     glutTimerFunc(0,timer_call,0);
     glutSpecialFunc(car_navigation);
     //glutReshapeFunc(myReshape);
-////////////////////////////////////////////////lighting////////////////////
-    /*GLfloat lightpos[]={1,2,3,1};
-    GLfloat amb[]={0.0,0.0,0.0,1};
-    GLfloat diff[]={1.0,0,0,1};
-    GLfloat spec[]={1,1,1,1};
 
-    glEnable(GL_LIGHTING);
-
-    //glLightModelfv(GL_LIGHT_MODEL_AMBIENT,amb);
-
-    glEnable(GL_LIGHT0);
-    glLightfv(GL_LIGHT0,GL_POSITION,lightpos);           // config light source
-    glLightfv(GL_LIGHT0,GL_AMBIENT,amb);
-    glLightfv(GL_LIGHT0,GL_DIFFUSE,diff);
-    glLightfv(GL_LIGHT0,GL_SPECULAR,spec);
-
-    const GLfloat fortyfive = 45.0;
-    const GLfloat twenty = 20.0;
-    GLfloat sd[] = {-1.0,-1.0,0.0};
-    glLightfv(GL_LIGHT0,GL_SPOT_DIRECTION,sd);
-    glLightfv(GL_LIGHT0,GL_SPOT_CUTOFF,fortyfive);
-    glLightfv(GL_LIGHT0,GL_SPOT_EXPONENT,twenty);*/
-///////////////////end of lighting//////////////////////////////////////////
-   gluLookAt(0.0,0.0,-10.0,0.0,0.0,0.0,0,1,0);
+   //gluLookAt(0.0,0.0,-10.0,0.0,0.0,0.0,0,1,0);
 
     glEnable (GL_LIGHTING);
     glEnable (GL_LIGHT0);
+
+
     //glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glEnable(GL_COLOR_MATERIAL);
     glShadeModel (GL_SMOOTH);
@@ -142,8 +117,20 @@ int main(int argc, char **argv)
 
             //set the light source properties
     GLfloat lightIntensity[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    GLfloat light_position[] = {-7.0f, -3.0f, -10.0f, 0.0f};
-    glLightfv (GL_LIGHT0, GL_POSITION, light_position);
+   // GLfloat light_position[] = {-7.0f, -3.0f, -7.0f, 0.0f};
+    // Create light components
+GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
+GLfloat diffuseLight[] = { 0.8f, 0.8f, 0.8, 1.0f };
+GLfloat specularLight[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+GLfloat position[] = { 1.5f, 1.0f, 4.0f, 1.0f };
+
+// Assign created components to GL_LIGHT0
+glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+glLightfv(GL_LIGHT0, GL_POSITION, position);
+
+    //glLightfv (GL_LIGHT0, GL_POSITION, light_position);
     glLightfv (GL_LIGHT0, GL_DIFFUSE, lightIntensity);
 
     myinit();

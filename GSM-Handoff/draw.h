@@ -1,5 +1,5 @@
 #include "linepoints.cpp"
-#include<string.h>
+
 int p=0;
 int i=0;
 
@@ -8,8 +8,15 @@ float points[20][2];
 float bs1msc[20][2];
 float mscbs2[20][2];
 
+void drawlines();
+void car();
+void towertemp();
+void tower();
+void trees();
+void treetemp();
+
 void top_car(){
-    glColor3f(0.0,0.0,1.0);
+    glColor3f(0.9,0.9,0.9);
     glBegin(GL_POLYGON);
 
   glVertex3f(-2,2,0.3);
@@ -41,6 +48,45 @@ glBegin(GL_POLYGON);
     glVertex3f(-3,0,2);
     glVertex3f(-3,0,0);
     glEnd();
+
+
+// outlining top car
+
+glColor3f(1,0,0);
+glLineWidth(5);
+    glBegin(GL_LINE_LOOP);
+
+  glVertex3f(-2,2,0.3);
+  glVertex3f(-3,0,0);
+  glVertex3f(3,0,0);
+  glVertex3f(2,2,0.3);
+    glEnd();
+
+     glBegin(GL_LINE_LOOP);
+
+  glVertex3f(-2,2,1.8);
+  glVertex3f(-3,0,2);
+  glVertex3f(3,0,2);
+  glVertex3f(2,2,1.8);
+    glEnd();
+
+    glBegin(GL_LINE_LOOP);// right
+
+    glVertex3f(2,2,0.3);
+    glVertex3f(2,2,1.8);
+    glVertex3f(3,0,2);
+    glVertex3f(3,0,0);
+    glEnd();
+
+glBegin(GL_LINE_LOOP);// left
+
+    glVertex3f(-2,2,0.3);
+    glVertex3f(-2,2,1.8);
+    glVertex3f(-3,0,2);
+    glVertex3f(-3,0,0);
+    glEnd();
+
+
 
 }
 
@@ -92,13 +138,13 @@ void car(){
 
 }
 
-void towertemp() {
+void towertemp(float x, float y, float z) {
     glPushMatrix();
     glLineWidth(4);
     glColor3f(0,0,0);
     glTranslatef(0,-2,0);
     glRotatef(75,-1,0,0);
-    glScalef(0.75,0.75,0.75);
+    glScalef(x,y,z);
     glutWireCone(2,8,6,10);
     glLineWidth(1);
     glPopMatrix();
@@ -108,19 +154,19 @@ void tower(){
 
     glPushMatrix();
     glTranslatef(-12,-1,0);
-    towertemp();
+    towertemp(0.75,0.75,0.75);
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(11,5,0);
-    towertemp();
+    glTranslatef(11,3,0);
+    towertemp(0.5,0.5,0.5);
     glPopMatrix();
 
 }
 
-void treetemp(){
+void treetemp(float x,float y,float z){
     glPushMatrix();
-    glScalef(2,2,2);
+    glScalef(x,y,z);
 
     //bark
     glColor3f(0.64,0.16,0.16);
@@ -165,28 +211,25 @@ void treetemp(){
 void trees(){
     glPushMatrix();
     glScalef(0.7,0.7,0.7);
-    //glTranslatef(-8,-6.5,0);
-    glTranslatef(-20,7,0);
-    treetemp();
+    glTranslatef(-25,2,0);
+    treetemp(1.7,1.7,1.7);
     glPopMatrix();
 
     glPushMatrix();
     glScalef(0.7,0.7,0.7);
-    //glTranslatef(-2,-6.5,0);
-    glTranslatef(-15,7,0);
-    treetemp();
+    glTranslatef(-20,2,0);
+    treetemp(2,2,2);
     glPopMatrix();
 
-}
-
-void hill(){
     glPushMatrix();
-    glColor3f(0.75,0.16,0.16);
-    glTranslatef(0,0,-3);
-    glScalef(3,4,1);
-    glutSolidSphere(2,30,30);
+    //glScalef(0.7,0.7,0.7);
+    glTranslatef(15,-6,-2);
+    treetemp(2.2,2.2,2.2);
     glPopMatrix();
+
+
 }
+
 
 void road(){
     glColor3f(0.4,0.4,0.4);
@@ -217,8 +260,12 @@ void road(){
 void msc() {
     glPushMatrix();
     glColor3f(0.7,0.7,0.7);
-    glTranslatef(-3.4,5,0);
-    glRotatef(45,1,1,0);
+    glTranslatef(-3,2.8,0);
+    glScalef(1,1.2,1);
+    glRotatef(45,0,1,0);
+    glRotatef(5,1,0,0);
+    //glTranslatef(15,0,0);
+    //glutWireCube(2);
     glutSolidCube(2);
     glPopMatrix();
 }
@@ -228,7 +275,7 @@ void range() {
     glEnable(GL_LINE_STIPPLE);
     glLineStipple(1,0x00FF);
 
-    glTranslatef(-4,5,-2);
+    glTranslatef(-4,2.3,-2);
     glScalef(0.65,0.65,0.65);
 
     glColor3f(0.0,0.0,1.0);
@@ -262,6 +309,23 @@ void range() {
 
     glDisable(GL_LINE_STIPPLE);
     glPopMatrix();
+}
+
+void horizon(){
+glColor3f(0.3,0.7,0.3);
+  glPushMatrix();
+  //glRotatef(10,0,1,0);
+  glTranslatef(0,-5,-5);
+  glScalef(20,2.8,0.1);
+  glutSolidCube(5);
+  /*glBegin(GL_POLYGON);
+  glVertex3f(-20,-10,-5);
+  glVertex3f(20,-10,-5);
+  glVertex3f(20,0,-5);
+  glVertex3f(-20,0,-5);
+  glEnd();
+  */
+  glPopMatrix();
 }
 
 void drawlines() {
@@ -313,21 +377,3 @@ void drawlines() {
     }
 }
 
-
-void display_string(int x, int y, char *string, int font)
-{
-	int len,i;
-	glRasterPos2f(x, y);
-	len = (int) strlen(string);
-	for (i = 0; i < len; i++) {
-		if(font==1)
-			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,string[i]);
-		else if(font==2)
-			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,string[i]);
-		else if(font==3)
-			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12,string[i]);
-		else if(font==4)
-			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10,string[i]);
-	}
-
-}

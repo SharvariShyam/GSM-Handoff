@@ -1,3 +1,5 @@
+#include<string.h>
+
 void findPoints(float x1, float y1, float x2, float y2, float points[20][2]) {
     //float points[30][2];
     int k=0;
@@ -62,10 +64,29 @@ void findPoints(float x1, float y1, float x2, float y2, float points[20][2]) {
 }
 
 void drawpixel(float x, float y) {
-    glPointSize(5.0);
+    glPointSize(10.0);
     glBegin(GL_POINTS);
     glColor3f(0.0,0.0,0.0);
     glVertex3f(x,y,0.0);
     glEnd();
     //printf("%.6f\t%.6f\n",x,y);
 }
+
+void display_string(int x, int y, char *string, int font)
+{
+	int len,i;
+	glRasterPos2f(x, y);
+	len = (int) strlen(string);
+	for (i = 0; i < len; i++) {
+		if(font==1)
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,string[i]);
+		else if(font==2)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,string[i]);
+		else if(font==3)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12,string[i]);
+		else if(font==4)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10,string[i]);
+	}
+
+}
+
