@@ -85,9 +85,13 @@ glBegin(GL_LINE_LOOP);// left
     glVertex3f(-3,0,2);
     glVertex3f(-3,0,0);
     glEnd();
-
-
-
+    glColor3f(1,0,0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2,2.1,0.3);
+    glVertex3f(-2,2.1,1.8);
+    glVertex3f(2,2.1,1.8);
+    glVertex3f(2,2.1,0.3);
+    glEnd();
 }
 
 void car(){
