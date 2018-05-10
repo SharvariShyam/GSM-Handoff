@@ -160,11 +160,13 @@ void tower(){
     glTranslatef(-12,-1,0);
     towertemp(0.75,0.75,0.75);
     glPopMatrix();
+    display_string(-13,3,"Old BS",2);
 
     glPushMatrix();
     glTranslatef(11,3,0);
     towertemp(0.5,0.5,0.5);
     glPopMatrix();
+    display_string(10,5.3,"New BS",2);
 
 }
 
@@ -272,6 +274,7 @@ void msc() {
     //glutWireCube(2);
     glutSolidCube(2);
     glPopMatrix();
+    display_string(-6,0.8,"Mobile Switching Center",2);
 }
 
 void range() {
@@ -344,30 +347,30 @@ void drawlines() {
         p++;
         if(p+4>=20)
             p=0;
-        points[20][2] = {0};
+        points[20][2] = {999};
     }
     else {
 
         findPoints((float)car_pos,(float)-5.0,(float)11.0,(float)2.8,points);
-        if(points[p][1] < 5.0){
+        if(points[p+7][1] < 5.0){
             drawpixel(points[p][0],points[p][1]);
             drawpixel(points[p+7][0],points[p+7][1]);
         }
         p++;
         if(p+7>=20)
             p=0;
-        points[20][2] = {0};
+        points[20][2] = {999};
     }
 
     //float bs1msc[20][2];
     if(car_pos>=-3 && car_pos<=0) {
         findPoints(-12.0,-1.0,-3,2.8,bs1msc);
         drawpixel(bs1msc[i][0],bs1msc[i][1]);
-        drawpixel(bs1msc[i+4][0],bs1msc[i+4][1]);
+        //drawpixel(bs1msc[i+4][0],bs1msc[i+4][1]);
         i++;
-        if(i+4>=20)
+        if(i>=20)
             i=0;
-        bs1msc[20][2] = {0};
+        bs1msc[20][2] = {999};
     }
 
     if(car_pos>=0 && car_pos<=3) {
@@ -377,15 +380,19 @@ void drawlines() {
         i++;
         if(i+4>=20)
             i=0;
-        mscbs2[20][2] = {0};
+        mscbs2[20][2] = {999};
     }
 }
 
 void frontpage() {
     //glClearColor(1.0,1.0,0.1,1.0);
     glColor3f(0.0,0.0,0.0);
-    display_string(-10,8,"PES INSTITUTE OF TECHNOLOGY-BANGALORE SOUTH CAMPUS",2); //correct cordinate according to name
-    display_string(215,500,"",1);
+    display_string(-9.5,8,"PES INSTITUTE OF TECHNOLOGY-BANGALORE SOUTH CAMPUS",2); //correct cordinate according to name
+    display_string(-2.5,5,"GSM HANDOFF",1);
+    display_string(-6.0,3.0,"Saumya Sachdev                     1PE15CS140",2);
+    display_string(-6.0,2.0,"Sharvari                                    1PE15CS143",2);
+    display_string(-2.5,0.0,"Press 'm' to continue!",2);
+    /*display_string(215,500,"",1);
     display_string(390,470,"HELP",2);
     display_string(10,450,"MOUSE",2);
     display_string(10,410,"PRESS RIGHT BUTTON FOR MENU",3);
@@ -395,7 +402,7 @@ void frontpage() {
     display_string(10,280,"U-F FOR CAMERA VIEW SETTINGS",3);
     display_string(10,250,"USE LEFT ARROW(<-) AND RIGHT ARROW(->) TO MOVE CAR",3);
     display_string(10,220,"ESCAPE TO EXIT",3);
-    display_string(250,150,"PRESS SPACE BAR TO ENTER",2);
+    display_string(250,150,"PRESS SPACE BAR TO ENTER",2);*/
     glutPostRedisplay();
     glutSwapBuffers();
 }
