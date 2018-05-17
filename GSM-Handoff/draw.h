@@ -161,13 +161,13 @@ void tower(){
     glTranslatef(-12,-1,0);
     towertemp(0.75,0.75,0.75);
     glPopMatrix();
-    display_string(-13,3,"Old BS",2);
+    //display_string(-13,3,"Old BS",2);
 
     glPushMatrix();
     glTranslatef(11,3,0);
     towertemp(0.5,0.5,0.5);
     glPopMatrix();
-    display_string(10,5.3,"New BS",2);
+   // display_string(10,5.3,"New BS",2);
 
 }
 
@@ -275,7 +275,7 @@ void msc() {
     //glutWireCube(2);
     glutSolidCube(2);
     glPopMatrix();
-    display_string(-6,0.8,"Mobile Switching Center",2);
+    //display_string(-6,0.8,"Mobile Switching Center",2);
 }
 
 void range() {
@@ -345,7 +345,6 @@ glPushMatrix();
 glTranslatef(0,4,0);
 
 tempcloud(1,0.5,1,0.8,1,0.6);
-
 glPushMatrix();
 glRotatef(0,0,1,0);
 glTranslatef(1.8,0,0);
@@ -450,21 +449,13 @@ void frontpage() {
     //glClearColor(1.0,1.0,0.1,1.0);
     glColor3f(0.0,0.0,0.0);
     display_string(-9.5,8,"PES INSTITUTE OF TECHNOLOGY-BANGALORE SOUTH CAMPUS",2); //correct cordinate according to name
+    display_string(-9.5,7,"DEPARTMENT OF COMPUTER SCIENCE",2); //correct cordinate according to name
+    display_string(-9.5,6,"COMPUTER GRAPHICS PROJECT ON",2); //correct cordinate according to name
     display_string(-2.5,5,"GSM HANDOFF",1);
     display_string(-6.0,3.0,"Saumya Sachdev                     1PE15CS140",2);
     display_string(-6.0,2.0,"Sharvari                                    1PE15CS143",2);
     display_string(-2.5,0.0,"Press 'm' to continue!",2);
-    /*display_string(215,500,"",1);
-    display_string(390,470,"HELP",2);
-    display_string(10,450,"MOUSE",2);
-    display_string(10,410,"PRESS RIGHT BUTTON FOR MENU",3);
-    display_string(10,370,"KEYBOARD",2);
-    display_string(10,340,"X-Y-Z KEYS FOR CORRESPONDING ROTATION",3);
-    display_string(10,310,"A-S-Q CAR CUSTOM SIZE SELECTION",3);
-    display_string(10,280,"U-F FOR CAMERA VIEW SETTINGS",3);
-    display_string(10,250,"USE LEFT ARROW(<-) AND RIGHT ARROW(->) TO MOVE CAR",3);
-    display_string(10,220,"ESCAPE TO EXIT",3);
-    display_string(250,150,"PRESS SPACE BAR TO ENTER",2);*/
+
     glutPostRedisplay();
     glutSwapBuffers();
 }

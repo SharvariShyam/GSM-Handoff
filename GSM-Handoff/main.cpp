@@ -19,8 +19,6 @@ void car_navigation(int,int,int);
 //static GLdouble viewer[] = {0.0,0.0,15.0};
 
 //int car_pos=-17;
-
-
 void move_car(){
     glPushMatrix();
     glTranslatef(0+car_pos,0,0);
@@ -36,14 +34,12 @@ void move_car(){
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  //  if(dis == 0) {
-    //    frontpage();
-    //}
-
-    //if(dis == 1){
-
-    addImage();
-    move_car();
+    if(dis == 0) {
+        frontpage();
+    }
+    if(dis == 1){
+        addImage();
+        move_car();
         trees();
         road();
         tower();
@@ -53,7 +49,7 @@ void display(){
         sky();
         cloudy();
         drawlines();
-    //}
+    }
     glFlush();
     glutSwapBuffers();
 }
